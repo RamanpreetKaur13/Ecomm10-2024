@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Models\AdminRole;
-
+use Exception;
 use App\Http\Requests\BannerRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,7 +51,8 @@ class BannerController extends Controller
      */
     public function store(BannerRequest $request)
     {
-      
+      try {
+        
         $data = [];
         if($request->hasFile('image')){
             $data['image']= store_image('image' ,'app/public/front/images/banners/' );
@@ -65,6 +66,11 @@ class BannerController extends Controller
 
         Banner::create($data);
         return redirect()->route('admin.banners.index')->with('success' , 'Banners created successfully');
+        
+      } catch (Exception $e) {
+        return redirect()->back()->with('error' , 'Something went Wrong! Please Try Again.');
+      }
+
     }
 
     /**

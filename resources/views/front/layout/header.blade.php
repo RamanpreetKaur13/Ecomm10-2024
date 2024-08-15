@@ -16,7 +16,7 @@
         </div>
 
         <div class="nav-search">
-            <label class="hidden">All
+            <label class="hidden" >All
                 <i class="fa-solid fa-caret-down"></i>
             </label>
             <input type="search" name="search" id="search" placeholder=" Search Amazon.in">
@@ -70,7 +70,7 @@
             </div> -->
 
             <div class="second-1 ">
-                <div>
+                <div onclick="openNav()">
                     <i class="fas fa-bars"></i>
                     <span>All</span>
                 </div>
