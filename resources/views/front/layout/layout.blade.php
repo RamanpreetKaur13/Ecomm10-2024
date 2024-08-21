@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>slidersOnline Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in
+  <title>Amazon 
   </title>
   <link rel="stylesheet" href="{{ asset('front/assets/css/style.css') }}">
   <link rel="shortcut icon" href="{{ asset('front/assets/fabicon.png') }}" type="image/x-icon">

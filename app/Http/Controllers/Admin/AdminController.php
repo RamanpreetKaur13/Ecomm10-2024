@@ -111,8 +111,11 @@ class AdminController extends Controller
 
     public function adminDetails(Request $request)
     {
+        try {
+           
         if ($request->isMethod('post')) {
             // $data = $request->all();
+            // dd(  $data);
             $data = [];
             $rules = [
                 'name' => 'required',
@@ -132,6 +135,12 @@ class AdminController extends Controller
         } else {
             return view('admin.update_admin_details');
         }
+         
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+           
+        }
+
     }
     public function index()
     {

@@ -49,7 +49,7 @@
                                                 <td>{!! $banner->title !!}</td>
                                                 {{-- <td>{{ $banner->alt }}</td> --}}
                                                 <td>{{ $banner->type }}</td>
-                                                <td>{{ $banner->link }}</td>
+                                                <td>{{ Str::limit($banner->link,50 ,'...')   }}</td>
                                                 <td>{{ $banner->sort }}</td>
 
                                                 {{-- restrict this feature is subadmin has no permissions --}}
@@ -126,18 +126,18 @@
 @push('script')
     <script>
         $(function() {
-            //   $("#cms_page_table").DataTable({
-            //     "responsive": true, "lengthChange": false, "autoWidth": false,
-            //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            //   }).buttons().container().appendTo('#cms_page_table_wrapper .col-md-6:eq(0)');
             $('#banner_table').DataTable({
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,
                 "ordering": true,
                 "info": true,
-                // "autoWidth": true,
-                // "responsive": true,
+                "scrollX":true,
+                // "columnDefs": [
+                //     // { "width": "20%", "targets": 0 },  // Set the width of the first column
+                //     { "width": "10px", "targets": 3 },  // Set the width of the second column
+                // ]
+                
             });
         });
     </script>

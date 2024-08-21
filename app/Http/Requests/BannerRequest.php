@@ -29,15 +29,22 @@ class BannerRequest extends FormRequest
                 'type' => 'required',
                 'alt' => 'required',
                 'sort' => 'required|numeric|unique:banners,sort,' . $this->banner . ',id',
-                'image' => 'dimensions:width=3000,height=1200',
+                // 'image' => 'dimensions:width=3000,height=1200',
                 
             ];
             // Modify image validation message for PUT requests
     
-            $rules['image'] = [
+            if (request()->type === 'Slider') {
+                $rules['image'] = [
+                    'required',
+                    Rule::dimensions()->width(3000)->height(1200),
+                ];
+            }
+
+            // $rules['image'] = [
                 
-                Rule::dimensions()->width(3000)->height(1200),
-            ];
+            //     Rule::dimensions()->width(3000)->height(1200),
+            // ];
             return $rules;
         }
         else{
@@ -47,14 +54,21 @@ class BannerRequest extends FormRequest
                 'type' => 'required',
                 'alt' => 'required',
                 'sort' => 'required|numeric|unique:banners,sort',
-                'image' => 'required|dimensions:width=3000,height=1200',
+                // 'image' => 'required|dimensions:width=3000,height=1200',
             ];
                 // Modify image validation message for PUT requests
     
-        $rules['image'] = [
-            'required',
-            Rule::dimensions()->width(3000)->height(1200),
-        ];
+                if (request()->type === 'Slider') {
+                    $rules['image'] = [
+                        'required',
+                        Rule::dimensions()->width(3000)->height(1200),
+                    ];
+                }else{
+                    $rules['image'] = [
+                        'required',
+                    ];
+                }
+        
 
             return $rules;
         }

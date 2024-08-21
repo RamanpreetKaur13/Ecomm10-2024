@@ -30,7 +30,7 @@
   </div>
   <div class="boxs">
     <div class="box1">
-      <div class="box boxIn2">
+      {{-- <div class="box boxIn2">
         <div>
           <h2>Keep shopping for</h2>
           <div>
@@ -45,6 +45,8 @@
               </div>
             </a>
 
+            
+
             <a href="#">
               <div>
                 <img src="{{ asset('front/assets/img/box112.jpg') }}" alt="">
@@ -58,7 +60,76 @@
           </div>
           <a class="seeOffer" href="#">view your browsing history</a>
         </div>
+      </div> --}}
+
+      <div class="box boxIn4">
+        <div>
+          <!-- <div> -->
+          <h2>Smart Phones that suit your budget</h2>
+          <!-- </div> -->
+
+          <div>
+            <div>
+              <div>
+                <a href="#">
+                  <div>
+                    <img src="{{ asset('front/assets/img/box121.jpg') }}" alt="">
+                  </div>
+                  <div>
+                    <span>
+                      Budget | Under ₹10,000
+                    </span>
+                  </div>
+                </a>
+              </div>
+              <div>
+                <a href="#">
+                  <div>
+                    <img src="{{ asset('front/assets/img/box122.jpg') }}" alt="">
+                  </div>
+                  <div>
+                    <span>
+                      Mid range | ₹10,000 - ₹25,000
+                    </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <a href="#">
+                  <div>
+                    <img src="{{ asset('front/assets/img/box123.jpg') }}" alt="">
+                  </div>
+                  <div>
+                    <span>
+                      Premium | ₹25,000 - 40,000
+                    </span>
+                  </div>
+                </a>
+              </div>
+              <div>
+                <a href="#">
+                  <div>
+                    <img src="{{ asset('front/assets/img/box124.jpg') }}" alt="">
+                  </div>
+                  <div>
+                    <span>
+                      Ultra Premium | Above ₹40,000
+                    </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div> -->
+          <a class="seeOffer" href="#">See all offers</a>
+          <!-- </div> -->
+        </div>
       </div>
+      
       <div class="box boxIn4">
         <div>
           <!-- <div> -->

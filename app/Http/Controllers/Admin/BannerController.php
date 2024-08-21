@@ -68,7 +68,7 @@ class BannerController extends Controller
         return redirect()->route('admin.banners.index')->with('success' , 'Banners created successfully');
         
       } catch (Exception $e) {
-        return redirect()->back()->with('error' , 'Something went Wrong! Please Try Again.');
+        return redirect()->back()->with('error' , 'Something went Wrong! Please Try Again.'.$e->getMessage());
       }
 
     }
