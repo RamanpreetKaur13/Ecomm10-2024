@@ -43,8 +43,8 @@ if (!function_exists('make_storage_dir')) {
 if (!function_exists('unlink_image_video_from_db')) {
     function unlink_image_video_from_db($storage_path, $image_or_video)
     {
+        
         $image_video_to_be_deleted = $storage_path . $image_or_video;
-
         if (file_exists($image_video_to_be_deleted)) {
             unlink($image_video_to_be_deleted);
         }

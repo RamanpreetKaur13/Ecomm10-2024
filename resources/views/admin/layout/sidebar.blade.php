@@ -65,16 +65,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{ route('admin.banners.index') }}"
-                            class="nav-link @if (Route::currentRouteName() == 'admin.banners.index') active @endif">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                Banners
-                                {{-- <span class="right badge badge-danger">New</span> --}}
-                            </p>
-                        </a>
-                    </li>
 
                 @if (Auth::guard('admin')->user()->type == 'admin')
                 <li class="nav-item">
@@ -85,6 +75,64 @@
                     </a>
                 </li>
                 @endif
+
+                @if (Auth::guard('admin')->user()->type == 'admin')
+                <li class="nav-item @if (Route::currentRouteName() == 'admin.section-management.index' || Route::currentRouteName() == 'admin.banners.index' || Route::currentRouteName() == 'admin.grid-cards.index' || Route::currentRouteName() == 'admin.carousel.index')  menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if (Route::currentRouteName() == 'admin.section-management.index' || Route::currentRouteName() == 'admin.banners.index'  || Route::currentRouteName() == 'admin.grid-cards.index' || Route::currentRouteName() == 'admin.carousel.index') active @endif">
+                        {{-- <i class="nav-icon fas fa-copy"></i> --}}
+                        <i class="nav-icon fa-solid fa-gear"></i>
+                        <p>
+                            Homepage Mgmnt
+                            <i class="fas fa-angle-left right"></i>
+                            {{-- <span class="badge badge-info right">6</span> --}}
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview @if (Route::currentRouteName() == 'admin.section-management.index' || Route::currentRouteName() == 'admin.banners.index') menu-open @endif">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.section-management.index') }}"
+                                class="nav-link @if (Route::currentRouteName() == 'admin.section-management.index') active @endif">
+                                {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                <i class="nav-icon fa-solid fa-circle"></i>
+                                <p>Section Management </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.banners.index') }}"
+                                class="nav-link  @if (Route::currentRouteName() == 'admin.banners.index') active @endif">
+                                <i class="nav-icon fa-solid fa-circle"></i>
+                                <p>Banners</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.grid-cards.index') }}"
+                                class="nav-link  @if (Route::currentRouteName() == 'admin.grid-cards.index') active @endif">
+                                <i class="nav-icon fa-solid fa-circle"></i>
+                                <p>Grid Cards</p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.carousel.index') }}"
+                                class="nav-link  @if (Route::currentRouteName() == 'admin.carousel.index') active @endif">
+                                <i class="nav-icon fa-solid fa-circle"></i>
+                                <p>Carousels</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.admin-details') }}"
+                                class="nav-link  @if (Route::currentRouteName() == 'admin.admin-details') active @endif">
+                                <i class="nav-icon fa-solid fa-circle"></i>
+                                <p>Carousel Items</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            @endif
+
 
                 @if (Auth::guard('admin')->user()->type == 'admin')
                     <li class="nav-item @if (Route::currentRouteName() == 'admin.password' || Route::currentRouteName() == 'admin.admin-details') menu-is-opening menu-open @endif">
@@ -118,8 +166,8 @@
                     </li>
                 @endif
 
-                <li class="nav-item @if (Route::currentRouteName() == 'admin.categories.index' || Route::currentRouteName() == 'admin.products.index') menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if (Route::currentRouteName() == 'admin.categories.index' || Route::currentRouteName() == 'admin.products.index') active @endif">
+                <li class="nav-item @if (Route::currentRouteName() == 'admin.categories.index' || Route::currentRouteName() == 'admin.products.index' || Route::currentRouteName() == 'admin.brands.index' || Route::currentRouteName() == 'admin.family-colors.index') menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if (Route::currentRouteName() == 'admin.categories.index' || Route::currentRouteName() == 'admin.products.index' || Route::currentRouteName() == 'admin.brands.index' || Route::currentRouteName() == 'admin.family-colors.index') active @endif">
                         {{-- <i class="nav-icon fas fa-copy"></i> --}}
                         <i class="nav-icon fa-solid fa-gear"></i>
                         <p>

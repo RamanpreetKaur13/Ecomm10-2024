@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\FamilyColorController;
 use App\Http\Controllers\Admin\ProductDetailController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\SectionMgmtController;
+use App\Http\Controllers\Admin\GridCardsController;
+use App\Http\Controllers\Admin\CarouselController;
 
 use App\Http\Controllers\Front\HomeController;
 
@@ -93,14 +96,35 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
         Route::get('brand-logo/delete/{id}' , 'BrandController@deleteLogo');
 
 
+        //section management 
+        Route::resource('section-management', SectionMgmtController::class);
+        Route::controller(SectionMgmtController::class)->group(function(){
+            Route::post('update-homepage-section-status' , 'updateHomepageSectionStatus')->name('update-homepage-section-status');
+            Route::get('homepageSection/delete/{id}' , 'delete');
+        });
+
         // banners
         Route::resource('banners', BannerController::class);
         Route::controller(BannerController::class)->group(function(){
             Route::post('update-banner-status' , 'updateBannerStatus')->name('update-banner-status');
             Route::get('banner/delete/{id}' , 'delete');
-
-            
         });
+
+        // Grid Cards
+        Route::resource('grid-cards', GridCardsController::class);
+        Route::controller(GridCardsController::class)->group(function(){
+            Route::post('update-grid-status' , 'updateGridStatus')->name('update-grid-status');
+            Route::get('grid/delete/{id}' , 'delete');
+        });
+
+        // Carousel Cards
+        Route::resource('carousel', CarouselController::class);
+        Route::controller(CarouselController::class)->group(function(){
+            Route::post('update-carousel-status' , 'updateCarouselStatus')->name('update-carousel-status');
+            Route::get('carousel/delete/{id}' , 'delete');
+        });
+
+        
 
 
         

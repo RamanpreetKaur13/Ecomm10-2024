@@ -111,6 +111,7 @@ class FamilyColorController extends Controller
 
     public function updateFamilyColorStatus(Request $request)
     {
+        // dd($request->family_colors_id);
         $status =  update_status($request);
         FamilyColor::where('id', $request->family_colors_id)->update(['status' => $status]);
         return response()->json(['status' => $status, 'family_colors_id' => $request->family_colors_id]);

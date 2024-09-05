@@ -2,16 +2,16 @@
 @section('content')
     <div class="content-wrapper">
         @include('admin.includes.page_header', [
-            'page_name' => 'Banners',
+            'page_name' => 'Grid Cards',
             'breadcrumb_link' => route('admin.dashboard'),
-            'breadcrumb_item' => 'banners',
+            'breadcrumb_item' => 'grid-cards',
         ])
         @include('alert_messages')
         @include('admin.includes.page_main_content', [
             'card_title' => 'Add Banners',
-            'back_link' => route('admin.banners.index'),
+            'back_link' => route('admin.grid-cards.index'),
         ])
-        <form action="{{ route('admin.banners.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.grid-cards.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 {{-- <div class="row">
@@ -42,13 +42,12 @@
                             <span class="text-danger"> {{ $message }}</span>
                         @enderror
                     </div>
-                    <x-forms.file-component label="Banner Image" name="image_url" dimension='3000 x 1200px'
-                        spanStar='*' />
+                    <x-forms.file-component label="Grid Image" name="image_url" dimension='3000 x 1200px' spanStar='*' />
 
                 </div>
-                <div class="row">
-                    <x-forms.text-input label="Banner Link URL" type="text" name="link_url"
-                        placeholder="Enter image link" spanStar='' />
+
+                {{-- <div class="row"> --}}
+                   
                     {{-- <div class="form-group col-6">
                     <label for="type">Banner Type <span class="text-danger">*</span> </label>
                     <select class="form-control" id="type" name="type" >
@@ -63,10 +62,22 @@
                     @enderror
                 </div> --}}
 
+                {{-- </div> --}}
+
+                <div class="row">
+                    <x-forms.text-input label="Title" type="text" name="title" placeholder="Enter title"
+                        spanStar='' />
+
+                    <x-forms.text-input label="Subtitle" type="text" name="subtitle" placeholder="Enter subtitle"
+                        spanStar='' />
+
                 </div>
                 <div class="row">
-                    <x-forms.text-input label="Banner Alternative Text" type="text" name="alt_text"
-                        placeholder="Enter Alternative Text" spanStar='*' />
+                    {{-- <x-forms.text-input label="Banner Alternative Text" type="text" name="alt_text"
+                        placeholder="Enter Alternative Text" spanStar='*' /> --}}
+
+                        <x-forms.text-input label="Banner Link URL" type="text" name="link_url" placeholder="Enter link URL"
+                        spanStar='' />
 
                     <x-forms.text-input label="Display Order" type="text" name="display_order"
                         placeholder="Enter Sorting number" spanStar='*' />
@@ -78,5 +89,4 @@
                 </div>
         </form>
     </div>
- 
 @endsection

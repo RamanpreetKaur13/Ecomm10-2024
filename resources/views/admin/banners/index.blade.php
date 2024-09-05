@@ -22,20 +22,23 @@
                                     <thead>
                                         <tr>
                                             <th>S.no.</th>
-                                            <th>Image</th>
+                                            <th>Section Name</th>
+                                            <th>Section Type</th>
+                                            <th>Image </th>
                                             {{-- <th>Title</th> --}}
-                                            <th>Name</th>
-                                            <th>Type</th>
+                                            {{-- <th>Name</th> --}}
+                                            
                                             <th>Link</th>
+                                            <th>Alt Text</th>
                                             <th>Sort</th>
-                                            @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1)
+                                            {{-- @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1) --}}
                                                 <th>Status</th>
-                                            @endif
+                                            {{-- @endif --}}
                                             <th>Created At </th>
                                             <th>Updated At </th>
-                                            @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1)
+                                            {{-- @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1) --}}
                                                 <th>Action</th>
-                                            @endif
+                                            {{-- @endif --}}
 
                                         </tr>
                                     </thead>
@@ -43,17 +46,19 @@
                                         @foreach ($banners as $banner)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $banner->homepage_section->name }}</td>
+                                                <td>{{ Str::ucfirst($banner->homepage_section->section_type ) }}</td>
                                                 <td>
-                                                    <img src="{{ asset('storage/front/images/banners/'.$banner->image) }}" alt="" srcset="" width="100px" height="80px">
+                                                    <img src="{{ asset('storage/front/images/banners/'.$banner->image_url) }}" alt="" srcset="" width="100px" height="80px">
                                                     {{-- {{ $banner->image }}</td> --}}
-                                                <td>{!! $banner->title !!}</td>
-                                                {{-- <td>{{ $banner->alt }}</td> --}}
-                                                <td>{{ $banner->type }}</td>
-                                                <td>{{ Str::limit($banner->link,50 ,'...')   }}</td>
-                                                <td>{{ $banner->sort }}</td>
+                                                    <td>{{ Str::limit($banner->link_url,50 ,'...')   }}</td>
+                                                <td>{{ $banner->alt_text }}</td>
+                                                {{-- <td>{{ $banner->type }}</td> --}}
+                                             
+                                                <td>{{ $banner->display_order }}</td>
 
                                                 {{-- restrict this feature is subadmin has no permissions --}}
-                                                @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1)
+                                                {{-- @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1) --}}
                                                     <td>
                                                         @if ($banner->status == 1)
                                                             <a href="javascript:void(0)" class="updateBannerStatus"
@@ -77,36 +82,36 @@
                                                         @endif
 
                                                 </td>
-                                        @endif
+                                        {{-- @endif --}}
                                         <td>{{ date_time_format($banner->created_at) }}
                                         </td>
                                         <td> {{ date_time_format($banner->updated_at) }}
                                         </td>
-                                        @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1)
+                                        {{-- @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1) --}}
                                             <td>
 
                                                 <div class="d-flex justify-content-center align-items-center">
-                                                    @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1)
+                                                    {{-- @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1) --}}
                                                         <a href="{{ route('admin.banners.edit', $banner->id) }}"
                                                             data-toggle="tooltip" title="Edit">
                                                             <button class="btn btn-primary"><i
                                                                     class="fa-solid fa-pen"></i></button>
                                                         </a>
-                                                    @endif
-                                                    @if ($bannerModule['full_access'] == 1)
+                                                    {{-- @endif --}}
+                                                    {{-- @if ($bannerModule['full_access'] == 1) --}}
                                                         <a data-toggle="tooltip" title="Delete">
                                                             <button class="btn btn-danger ml-2 confirmDelete"
                                                                 data-toggle="tooltip" title="Delete" module="banner"
                                                                 module_id={{ $banner->id }}><i
                                                                     class="fa-solid fa-trash-can"></i></button>
                                                         </a>
-                                                    @endif
+                                                    {{-- @endif --}}
                                                 </div>
                                             </td>
-                                        @endif
+                                        {{-- @endif --}}
                                         </tr>
                                         @endforeach
-                                        </tfoot>
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -132,7 +137,7 @@
                 "searching": true,
                 "ordering": true,
                 "info": true,
-                "scrollX":true,
+                // "scrollX":true,
                 // "columnDefs": [
                 //     // { "width": "20%", "targets": 0 },  // Set the width of the first column
                 //     { "width": "10px", "targets": 3 },  // Set the width of the second column

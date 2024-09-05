@@ -9,10 +9,4 @@ class Banner extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
-    public function homepage_section(){
-        return $this->belongsTo(HomepageSection::class , 'homepage_section_id' , 'id');
-
-    }
-
 }

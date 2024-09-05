@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class BannerRequest extends FormRequest
+class GridCardRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,18 +21,19 @@ class BannerRequest extends FormRequest
      */
     public function rules(): array
     {
-        if(request()->isMethod('put')){
-            $rules= [
+        if (request()->isMethod('put')) {
+            $rules = [
                 'homepage_section_id' => 'required',
                 'image_url' => 'nullable',
                 'link_url' => 'required',
-                'alt_text' => 'required',
-                'display_order' => 'required|numeric|unique:banners,display_order,' . $this->banner . ',id',
+                'title' => 'required',
+                'subtitle' => 'required',
+                'display_order' => 'required|numeric|unique:grid_cards,display_order,' . $this->banner . ',id',
                 // 'image' => 'dimensions:width=3000,height=1200',
-                
+
             ];
             // Modify image validation message for PUT requests
-    
+
             // if (request()->type === 'Slider') {
             //     $rules['image'] = [
             //         'required',
@@ -42,47 +42,23 @@ class BannerRequest extends FormRequest
             // }
 
             // $rules['image'] = [
-                
+
             //     Rule::dimensions()->width(3000)->height(1200),
             // ];
             return $rules;
-        }
-        else{
+        } else {
             $rules =  [
                 'homepage_section_id' => 'required',
                 'image_url' => 'required',
                 'link_url' => 'required',
-                'alt_text' => 'required',
-                'display_order' => 'required|numeric|unique:banners,display_order',
+                'title' => 'required',
+                'subtitle' => 'required',
+                'display_order' => 'required|numeric|unique:grid_cards,display_order',
                 // 'display_order' => 'required|numeric|unique:banners,sort',
                 // 'image' => 'required|dimensions:width=3000,height=1200',
             ];
-                // Modify image validation message for PUT requests
-    
-                // if (request()->type === 'Slider') {
-                //     $rules['image'] = [
-                //         'required',
-                //         Rule::dimensions()->width(3000)->height(1200),
-                //     ];
-                // }else{
-                //     $rules['image'] = [
-                //         'required',
-                //     ];
-                // }
-        
 
             return $rules;
         }
-
     }
-
-    public function messages(): array
-    {
-        return [
-            'image.dimensions' => 'The image must be 3000x1200 pixels.',
-            
-        ];
-    }
-
-
 }
