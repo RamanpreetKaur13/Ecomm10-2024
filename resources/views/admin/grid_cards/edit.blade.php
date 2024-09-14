@@ -14,6 +14,7 @@
         <form action="{{ route('admin.grid-cards.update', $gridCard->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <input type="hidden" value="{{  $gridCard->id }}" name="id">
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-6">
@@ -34,7 +35,7 @@
                             <span class="text-danger"> {{ $message }}</span>
                         @enderror
                     </div>
-                    <x-forms.file-component label="Grid Image" name="image_url" dimension='3000 x 1200px' spanStar='*' />
+                    <x-forms.file-component label="Grid Image" name="image_url" dimension='max. 150 x 100px' spanStar='*' />
 
                 </div>
 
@@ -62,12 +63,20 @@
                         <label for="alt">Title <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="Enter title"
                             value="{{ old('title', $gridCard->title) }}">
+
+                            @error('title')
+                            <span class="text-danger"> {{ $message }}</span>
+                        @enderror
+
                     </div>
 
                     <div class="form-group col-6">
                         <label for="subtitle">Subtitle <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="subtitle" name="subtitle"
                             placeholder="Enter subtitle" value="{{ old('title', $gridCard->subtitle) }}">
+                            @error('subtitle')
+                            <span class="text-danger"> {{ $message }}</span>
+                        @enderror
                     </div>
 
                 </div>
@@ -76,12 +85,20 @@
                         <label for="link_url">Link URL <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="link_url" name="link_url"
                             placeholder="Enter link url" value="{{ old('link_url', $gridCard->link_url) }}">
+
+                            @error('link_url')
+                            <span class="text-danger"> {{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-6">
                         <label for="display_order">Display Order <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="display_order" name="display_order"
                             placeholder="Enter display order" value="{{ old('display_order', $gridCard->display_order) }}">
-                    </div>
+                            <small class="text-muted">Taken numbers: <span id="taken-numbers"></span></small>
+                            @error('display_order')
+                            <span class="text-danger"> {{ $message }}</span>
+                        @enderror
+                        </div>
 
 
                 </div>
@@ -116,4 +133,26 @@
                 </div>
         </form>
     </div>
+
+    @push('script')
+    
+
+    <script>
+        $(document).ready(function() {
+            var existingDisplayOrders = @json($all_grid_display_orders);
+    
+            // Display the taken numbers
+            $('#taken-numbers').text(existingDisplayOrders.join(', '));
+    
+            // Check display order on input blur (when user leaves the field)
+            $('#display_order').on('blur', function() {
+                var inputVal = $(this).val();
+                if (inputVal !== "" && existingDisplayOrders.includes(parseInt(inputVal))) {
+                    alert('This display order is already taken. Please choose another one.');
+                    $(this).val(''); // Clear the input field
+                }
+            });
+        });
+    </script>
+    @endpush
 @endsection

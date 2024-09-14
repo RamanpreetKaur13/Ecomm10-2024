@@ -23,6 +23,7 @@ class BannerRequest extends FormRequest
     public function rules(): array
     {
         if(request()->isMethod('put')){
+            // dd( $this->banner);
             $rules= [
                 'homepage_section_id' => 'required',
                 'image_url' => 'nullable',
@@ -76,13 +77,13 @@ class BannerRequest extends FormRequest
 
     }
 
-    public function messages(): array
-    {
-        return [
-            'image.dimensions' => 'The image must be 3000x1200 pixels.',
+    // public function messages(): array
+    // {
+    //     return [
+    //         'image.dimensions' => 'The image must be 3000x1200 pixels.',
             
-        ];
-    }
+    //     ];
+    // }
 
 
 }

@@ -24,7 +24,7 @@ class CarouselRequest extends FormRequest
         return [
             'name' => 'required',
             'homepage_section_id' => 'required',
-            'display_order' => 'required',
+            'display_order' => 'required|integer|min:0|max:2147483647',
         ];
     }
 }

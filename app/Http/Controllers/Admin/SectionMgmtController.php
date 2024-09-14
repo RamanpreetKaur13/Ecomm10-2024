@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\HomepageSection;
-
+use App\Http\Requests\sectionmgmtRequest;
 class SectionMgmtController extends Controller
 {
     /**
@@ -23,13 +23,14 @@ class SectionMgmtController extends Controller
      */
     public function create()
     {
-        return view('admin.section_mgmt.create');
+        $all_homepage_sections_display_orders = HomepageSection::select('display_order')->get()->pluck('display_order')->toArray(); 
+        return view('admin.section_mgmt.create',compact('all_homepage_sections_display_orders'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(sectionmgmtRequest $request)
     {
         try {
 
@@ -58,13 +59,14 @@ class SectionMgmtController extends Controller
     public function edit(string $id)
     {
         $homepage_section = HomepageSection::find($id);
-        return view('admin.section_mgmt.edit')->with(compact('homepage_section'));
+        $all_homepage_sections_display_orders = HomepageSection::select('display_order')->get()->pluck('display_order')->toArray(); 
+        return view('admin.section_mgmt.edit')->with(compact('homepage_section' ,'all_homepage_sections_display_orders'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(sectionmgmtRequest $request, string $id)
     {
         $homepage_section = HomepageSection::whereId($id)->update([
             'name' => $request->name,

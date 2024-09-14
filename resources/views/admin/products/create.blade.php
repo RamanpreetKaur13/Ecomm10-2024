@@ -21,7 +21,7 @@
 
                 <div class="row">
                     <x-forms.text-input label="Product Name" type="text" name="product_name"
-                        placeholder="Enter product name" />
+                        placeholder="Enter product name" spanStar='*'/>
                     <div class="form-group col-6">
                         <label for="category_id">Select Category Level</label>
                         <select class="form-control" name="category_id" style="width: 100%;">
@@ -81,19 +81,19 @@
                     </select>
                     </div>
                     <x-forms.text-input label="Product Code" type="text" name="product_code"
-                        placeholder="Enter product code" />
+                        placeholder="Enter product code" spanStar='*' />
                 </div>
                 <div class="row">
                     <x-forms.text-input label="Product Price" type="number" name="product_price"
-                        placeholder="Enter product price" />
+                        placeholder="Enter product price" spanStar='*'/>
                     <x-forms.text-input label="Product Discount" type="number" name="product_discount"
-                        placeholder="Enter product discount" />
+                        placeholder="Enter product discount" spanStar='*' />
                 </div>
                 <div class="row">
                     <x-forms.textarea-component label="Product Description" name="product_description"
-                        placeholder="Enter description" />
+                        placeholder="Enter description" spanStar='*'/>
                         <x-forms.text-input label="Group Code" type="text" name="group_code"
-                        placeholder="Enter group code" />
+                        placeholder="Enter group code" spanStar='*'/>
                 </div>
 
                 <div class="row">

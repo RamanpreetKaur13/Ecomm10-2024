@@ -42,6 +42,12 @@
                     <x-forms.text-input label="Display Order" type="text" name="display_order"
                         placeholder="Enter Sorting number" spanStar='*' />
                 </div>
+                @error('display_order')
+                <span class="text-danger"> {{ $message }}</span>
+            @enderror
+
+                <small class="text-muted">Taken numbers: <span id="taken-numbers"></span></small>
+
                 <hr>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -53,4 +59,27 @@
     </div>
     </section>
     </div>
+
+    @push('script')
+    
+
+<script>
+    $(document).ready(function() {
+        var existingDisplayOrders = @json($all_homepage_sections_display_orders);
+
+        // Display the taken numbers
+        $('#taken-numbers').text(existingDisplayOrders.join(', '));
+
+        // Check display order on input blur (when user leaves the field)
+        $('#display_order').on('blur', function() {
+            var inputVal = $(this).val();
+            if (inputVal !== "" && existingDisplayOrders.includes(parseInt(inputVal))) {
+                alert('This display order is already taken. Please choose another one.');
+                $(this).val(''); // Clear the input field
+            }
+        });
+    });
+</script>
+@endpush
+
 @endsection

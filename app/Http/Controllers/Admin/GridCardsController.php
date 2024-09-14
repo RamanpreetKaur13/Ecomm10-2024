@@ -24,10 +24,11 @@ class GridCardsController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-       $homepage_section = HomepageSection::where('section_type','grid')->get();
-        return view('admin.grid_cards.create',compact('homepage_section'));
-    }
+{
+    $homepage_section = HomepageSection::where('section_type', 'grid')->orderBy('display_order' , 'asc')->get();
+    $all_grid_display_orders = GridCard::select('display_order')->get()->pluck('display_order')->toArray(); 
+    return view('admin.grid_cards.create', compact('homepage_section', 'all_grid_display_orders'));
+}
 
     /**
      * Store a newly created resource in storage.
@@ -70,13 +71,14 @@ class GridCardsController extends Controller
     {
         $gridCard = GridCard::find($id); 
        $homepage_section = HomepageSection::where('section_type','grid')->get();
-        return view('admin.grid_cards.edit')->with(compact('gridCard' ,'homepage_section'));
+       $all_grid_display_orders = GridCard::select('display_order')->get()->pluck('display_order')->toArray(); 
+        return view('admin.grid_cards.edit')->with(compact('gridCard' ,'homepage_section' ,'all_grid_display_orders'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(GridCardRequest $request, string $id)
     {
         try {
             if ($request->hasFile('image_url')) {

@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\SectionMgmtController;
 use App\Http\Controllers\Admin\GridCardsController;
 use App\Http\Controllers\Admin\CarouselController;
+use App\Http\Controllers\Admin\CarouselItemController;
 
 use App\Http\Controllers\Front\HomeController;
 
@@ -124,7 +125,12 @@ Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')-
             Route::get('carousel/delete/{id}' , 'delete');
         });
 
-        
+        // Carousel item Cards
+        Route::resource('carousel-items', CarouselItemController::class);
+        Route::controller(CarouselItemController::class)->group(function(){
+            Route::post('update-carouselitem-status' , 'updateCarouselitemStatus')->name('update-carouselitem-status');
+            Route::get('carouselitem/delete/{id}' , 'delete');
+        });
 
 
         

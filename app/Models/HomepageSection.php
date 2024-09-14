@@ -9,4 +9,10 @@ class HomepageSection extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function grid(){
+        return $this->hasMany(GridCard::class , 'homepage_section_id' , 'id')->where('status' ,1);
+
+    }
+
 }

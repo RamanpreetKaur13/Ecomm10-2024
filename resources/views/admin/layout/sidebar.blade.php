@@ -77,8 +77,8 @@
                 @endif
 
                 @if (Auth::guard('admin')->user()->type == 'admin')
-                <li class="nav-item @if (Route::currentRouteName() == 'admin.section-management.index' || Route::currentRouteName() == 'admin.banners.index' || Route::currentRouteName() == 'admin.grid-cards.index' || Route::currentRouteName() == 'admin.carousel.index')  menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if (Route::currentRouteName() == 'admin.section-management.index' || Route::currentRouteName() == 'admin.banners.index'  || Route::currentRouteName() == 'admin.grid-cards.index' || Route::currentRouteName() == 'admin.carousel.index') active @endif">
+                <li class="nav-item @if (Route::currentRouteName() == 'admin.section-management.index' || Route::currentRouteName() == 'admin.banners.index' || Route::currentRouteName() == 'admin.grid-cards.index' || Route::currentRouteName() == 'admin.carousel.index' ||Route::currentRouteName() == 'admin.carousel-items.index')  menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if (Route::currentRouteName() == 'admin.section-management.index' || Route::currentRouteName() == 'admin.banners.index'  || Route::currentRouteName() == 'admin.grid-cards.index' || Route::currentRouteName() == 'admin.carousel.index' ||Route::currentRouteName() == 'admin.carousel-items.index') active @endif">
                         {{-- <i class="nav-icon fas fa-copy"></i> --}}
                         <i class="nav-icon fa-solid fa-gear"></i>
                         <p>
@@ -122,8 +122,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('admin.admin-details') }}"
-                                class="nav-link  @if (Route::currentRouteName() == 'admin.admin-details') active @endif">
+                            <a href="{{ route('admin.carousel-items.index') }}"
+                                class="nav-link  @if (Route::currentRouteName() == 'admin.carousel-items.index') active @endif">
                                 <i class="nav-icon fa-solid fa-circle"></i>
                                 <p>Carousel Items</p>
                             </a>

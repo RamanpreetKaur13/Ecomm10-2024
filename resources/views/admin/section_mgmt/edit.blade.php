@@ -1,41 +1,4 @@
 @extends('admin.layout.layout')
-@push('styles')
-    <style>
-        .img-wrap {
-            position: relative;
-
-        }
-
-        .close {
-            background: red;
-            border-radius: 21px;
-            padding: 1px 15px;
-            width: 31px;
-            height: 31px;
-        }
-
-        .img-wrap .close {
-            position: absolute;
-            top: -15px;
-            right: 291px;
-            z-index: 100;
-            padding-left: 9px;
-            padding-top: 3px;
-
-        }
-
-        .ck.ck-content {
-            background-color: #f5f5f5;
-            /* Change to the desired background color */
-        }
-
-        /* Change text color */
-        .ck.ck-content {
-            color: #333;
-            /* Change to the desired text color */
-        }
-    </style>
-@endpush
 @section('content')
     <div class="content-wrapper">
 
@@ -53,8 +16,11 @@
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            {{-- this hidden input name= id will use for validating display_order uniqueness --}}
+            <input type="text" value="{{  $homepage_section->id }}" name="id">
             <div class="card-body">
                 <div class="row">
+                  
                     <div class="form-group col-6">
                         <label for="name">Section Name<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="name" name="name"
@@ -90,7 +56,10 @@
                         <label for="display_order"> Display Order <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="display_order" name="display_order"
                             placeholder="Enter Sorting number" value="{{ old('display_order', $homepage_section->display_order) }}">
-
+                            <small class="text-muted">Taken numbers: <span id="taken-numbers"></span></small>
+                            @error('display_order')
+                            <span class="text-danger"> {{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group col-6 d-none">
@@ -113,4 +82,26 @@
     </div>
     </section>
     </div>
+    @push('script')
+    
+
+<script>
+    $(document).ready(function() {
+        var existingDisplayOrders = @json($all_homepage_sections_display_orders);
+
+        // Display the taken numbers
+        $('#taken-numbers').text(existingDisplayOrders.join(', '));
+
+        // Check display order on input blur (when user leaves the field)
+        $('#display_order').on('blur', function() {
+            var inputVal = $(this).val();
+            if (inputVal !== "" && existingDisplayOrders.includes(parseInt(inputVal))) {
+                alert('This display order is already taken. Please choose another one.');
+                $(this).val(''); // Clear the input field
+            }
+        });
+    });
+</script>
+@endpush
+
 @endsection

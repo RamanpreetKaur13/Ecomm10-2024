@@ -30,13 +30,11 @@
                             <option value="">select</option>
 
                             @foreach ($homepage_section as $section)
-                                <option value="{{ $section->id }}">
-                                    {{ $section->name }}</option>
+                            <option value="{{ $section->id }}" @if (old('homepage_section_id') == $section->id) selected @endif>
+                                {{ $section->name }}
+                            </option>
                             @endforeach
-                            {{-- <option value="Fixed" @if (old('homepage_section_id') === 'Fixed') selected @endif>
-                            Fixed</option>
-                        <option value="Slider" @if (old('homepage_section_id') === 'Slider') selected @endif>
-                            Slider</option> --}}
+                            
                         </select>
                         @error('homepage_section_id')
                             <span class="text-danger"> {{ $message }}</span>
