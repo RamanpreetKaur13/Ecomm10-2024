@@ -27,38 +27,7 @@
         </div>
         <div class="boxs">
             <div class="box1">
-                {{-- <div class="box boxIn2">
-        <div>
-          <h2>Keep shopping for</h2>
-          <div>
-            <a href="#">
-              <div>
-                <img src="{{ asset('front/assets/img/bigImg1.jpg') }}" alt="">
-              </div>
-              <div>
-                <span>Taped diapers</span>
-                <br>
-                <span class="view">1 viewed</span>
-              </div>
-            </a>
-
-            
-
-            <a href="#">
-              <div>
-                <img src="{{ asset('front/assets/img/box112.jpg') }}" alt="">
-              </div>
-              <div>
-                <span>Hi-fi & home audio speakers</span>
-                <br>
-                <span class="view">1 viewed</span>
-              </div>
-            </a>
-          </div>
-          <a class="seeOffer" href="#">view your browsing history</a>
-        </div>
-      </div> --}}
-
+             
                 {{-- grid first row starts --}}
                 @if (!empty($grids))
                     @foreach ($grids as $grid)
@@ -119,87 +88,6 @@
                     @endforeach
                 @endif
 
-                 {{-- <div class="box boxIn4">
-                    <div>
-                        <!-- <div> -->
-                        <h2>Smart Phones that suit your budget</h2>
-                        <!-- </div> -->
-
-                        <div>
-                            <div>
-                                <div>
-                                    <a href="#">
-                                        <div>
-                                            <img src="{{ asset('front/assets/img/box121.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <span>
-                                                Budget | Under ₹10,000
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="#">
-                                        <div>
-                                            <img src="{{ asset('front/assets/img/box122.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <span>
-                                                Mid range | ₹10,000 - ₹25,000
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <a href="#">
-                                        <div>
-                                            <img src="{{ asset('front/assets/img/box123.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <span>
-                                                Premium | ₹25,000 - 40,000
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="#">
-                                        <div>
-                                            <img src="{{ asset('front/assets/img/box124.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <span>
-                                                Ultra Premium | Above ₹40,000
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- <div> -->
-                        <a class="seeOffer" href="#">See all offers</a>
-                        <!-- </div> -->
-                    </div>
-                </div> --}}
-                {{-- <div class="box boxIn1">
-                    <div>
-                        <h2>Great Freedom sale</h2>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/box131.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <a class="seeOffer" href="#">See all</a>
-                    </div>
-                </div> --}}
-
                 <div class="box boxButton hidden">
                     <div>
                         <div class="last-sign-in">
@@ -225,19 +113,6 @@
                     @if ($loop->iteration > 3)
                     
                 
-                {{-- <div class="box boxIn1">
-                    <div>
-                        <h2>Starting ₹129 | Monitors, storage, accessories & more</h2>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/box151.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <a class="seeOffer" href="#">See all offers</a>
-                    </div>
-                </div> --}}
                 <div class="box boxIn4">
                     <div>
                         <h2>{{ $grid['name'] }}</h2>
@@ -292,73 +167,6 @@
                 @endforeach
                 @endif
 
-                {{-- <div class="box boxIn4">
-                    <div>
-                        <!-- <div> -->
-                        <h2>Up to 70% off | Deals on Amazon Brands & more</h2>
-                        <!-- </div> -->
-
-                        <div>
-                            <div>
-                                <div>
-                                    <a href="#">
-                                        <div>
-                                            <img src="{{ asset('front/assets/img/box171.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <span>
-                                                Up to 70% off | Home & kitchen
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="#">
-                                        <div>
-                                            <img src="{{ asset('front/assets/img/box172.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <span>
-                                                Up to 70% off | Electronic accessories
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div>
-                                    <a href="#">
-                                        <div>
-                                            <img src="{{ asset('front/assets/img/box173.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <span>
-                                                Up to 60% off | Daily essentials
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="#">
-                                        <div>
-                                            <img src="{{ asset('front/assets/img/box174.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <span>
-                                                Under ₹599 | Clothing, shoes & more
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- <div> -->
-                        <a class="seeOffer" href="#">Prime Early | See all offers</a>
-                        <!-- </div> -->
-                    </div>
-                </div> --}}
                 <div class="box boxIn4 hidden">
                     <div>
                         <!-- <div> -->
@@ -427,26 +235,30 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="box2 blockbuster_deals"> -->
-            <div class="box2 ">
-                <div>
+
+            @if (!empty($carousels))
+            @foreach ($carousels as $carousel)
+                <div class="box2">
                     <div>
-                        <h2>Blockbuster deals</h2>
-                        <span>See all deals</span>
-                    </div>
-                    <div class="mini_slide-block autoplay">
-                        <!-- <div class="left_img_button" id="slideButton-b">
+                        <div>
+                            <h2>{{ $carousel['name'] }}</h2>
+                            <span>See all deals</span>
+                        </div>
+                        <div class="mini_slide-block autoplay">
+                            <!-- <div class="left_img_button" id="slideButton-b">
                               <i class="fa-solid fa-angle-left"></i>
                           </div> -->
-                        <div class="">
-                            <div>
-                                <a href="#">
+                            @foreach ($carousel['carousel_item'] as $key => $carousel_item)
+                                <div class="">
                                     <div>
-                                        <img src="{{ asset('front/assets/img/boxb101.jpg') }}" alt="">
+                                        <a href="#">
+                                            <div>
+                                                <img src="{{ asset('storage/front/images/carousels/' . $carousel_item['image_url']) }}"
+                                                    alt="">
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div>
+                                    {{-- <div>
                                 <div>
                                     <span><button class="box2_btn">Up to 24% off</button></span>
                                     <span class="box2_info_text">Great Freedom Sale</span>
@@ -454,453 +266,22 @@
                                 <div>
                                     <span style="color: #222;">Samsung Galaxy M34</span>
                                 </div>
-                            </div>
+                            </div> --}}
+                                </div>
+                            @endforeach
+                          
                         </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb102.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Up to 45% off</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Redmi 12C | Starting from 7699 incl...</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb103.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Up to 76% off</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Top headsets from Oneplus, Samsung...</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb104.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Up to 38% off</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Daily Essentials</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb105.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Up to 43% off</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Skin - Biotique, Cetaphil, Himalaya...</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb106.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Up to 55% off</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">JBL Audio Freedom Sale Deals...</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb107.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Deal of the Day</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">OnePlus Nord CE 3 5G | Latest launch...</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb108.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Up to 58% off</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Alexa Devices - Echo and Fire TV..</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb109.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Up to 63% off</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Best Styles in Footwear and Handbags...</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb110.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <span><button class="box2_btn">Up to 60% off</button></span>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Top Offers on Mice & Keyboards</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb111.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <button class="box2_btn">Up to 76% off</button>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Best Selling Massagers</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb112.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <button class="box2_btn">Up to 61% off</button>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Lowest Ever Price on PS5 Console</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb113.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <button class="box2_btn">Up to 68% off</button>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Cycle and Cycling accessories: Lifelong...</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb114.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <button class="box2_btn">Up to 63% off</button>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Gas Stoves and Hobs from Top Brands</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <a href="#">
-                                    <div>
-                                        <img src="{{ asset('front/assets/img/boxb115.jpg') }}" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div>
-                                    <button class="box2_btn">Up to 38% off</button>
-                                    <span class="box2_info_text">Great Freedom Sale</span>
-                                </div>
-                                <div>
-                                    <span style="color: #222;">Lowest Prices of the year on Smartwa...</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="right_img_button" id="slideButton-b">
-                              <i class="fa-solid fa-angle-right"></i>
-                          </div> -->
                     </div>
                 </div>
-            </div>
+            @endforeach
+        @endif
+
+        <!----  carousel 1 closed------->
+
             <hr class="hr_color">
 
-            <div class="box2">
-                <div>
-                    <div>
-                        <h2>Minimum 40% off | Beauty & makeup</h2>
-                        <span>See all offers</span>
-                    </div>
-                    <div class="mini_slide-block autoplay">
-                        <!-- <div class="left_img_button" id="slideButton-b">
-                              <i class="fa-solid fa-angle-left"></i>
-                          </div> -->
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx21.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx22.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx23.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx24.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx25.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx26.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx27.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx28.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx29.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx210.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx211.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx212.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx213.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx214.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx215.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx216.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx217.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx218.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx219.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx220.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx221.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx222.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx223.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div>
-                                    <img src="{{ asset('front/assets/img/boxx224.jpg') }}" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <!-- <div class="right_img_button" id="slideButton-b">
-                              <i class="fa-solid fa-angle-right"></i>
-                          </div> -->
-                    </div>
-                </div>
-            </div>
 
+            <!----- already was closed 9/15/2024--->
             <!-- <div class="box2 minimum_50">
                   <div>
                       <div>
@@ -1085,8 +466,71 @@
                       </div>
                   </div>
               </div> -->
+
+              <!-------3rd grid ----->
             <div class="box11">
-                <div class="box boxIn4">
+
+                @if (!empty($grids))
+                @foreach ($grids as $grid)
+                @if ($loop->iteration > 7)
+                    <div class="box boxIn4">
+                        <div>
+                            <h2>{{ $grid['name'] }}</h2>
+                            <div>
+                                <!-- <div> -->
+                                    <div>
+                                        @foreach ($grid['grid'] as $key => $item)
+                                            @if ($key < 2)
+                                                <!-- First two items -->
+                                                <div >
+                                                    <a href="{{ $item['link_url'] }}">
+                                                        <div style="width: 150px; height: 120px;">
+                                                            <img src="{{ asset('storage/front/images/gridCards/' . $item['image_url']) }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div>
+                                                            <span>{{ $item['title'] }}</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                <!-- </div>  -->
+
+                                <!-- <div> -->
+                                    <div>
+                                        <!-- Next two items (index 2 and 3) -->
+                                        @foreach ($grid['grid'] as $key => $item)
+                                            @if ($key >= 2)
+                                                <!-- Last two items -->
+                                                <div >
+                                                    <a href="{{ $item['link_url'] }}">
+                                                        <div style="width: 150px; height: 120px;">
+                                                            <img src="{{ asset('storage/front/images/gridCards/' . $item['image_url']) }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div>
+                                                            <span>{{ $item['title'] }}</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                <!-- </div>  -->
+                            </div>
+                            <a class="seeOffer" href="#">See all offers</a>
+                        </div>
+                    </div>
+                @endif
+                    @if ($loop->iteration == 11)
+                    @break;
+                @endif
+                @endforeach
+            @endif
+
+                {{-- <div class="box boxIn4">
                     <div>
                         <!-- <div> -->
                         <h2>Starting ₹79 | Home, kitchen & outdoors</h2>
@@ -1152,8 +596,8 @@
                         <a class="seeOffer" href="#">See all offers</a>
                         <!-- </div> -->
                     </div>
-                </div>
-                <div class="box boxIn4">
+                </div> --}}
+                {{-- <div class="box boxIn4">
                     <div>
                         <!-- <div> -->
                         <h2>Minimum 60% off | Amazon Brands & more</h2>
@@ -1308,9 +752,9 @@
                         <a class="seeOffer" href="#">See all offers</a>
                         <!-- </div> -->
                     </div>
-                </div>
+                </div> --}}
             </div>
-
+                <!-------3rd grid closed ----->
             <div class="box2">
                 <div>
                     <div>

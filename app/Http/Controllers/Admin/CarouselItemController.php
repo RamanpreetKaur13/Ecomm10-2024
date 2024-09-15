@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Carousel;
+// use App\Models\Carousel;
+use App\Models\HomepageSection;
 use App\Models\CarouselItem;
+use App\Http\Requests\CarouselItemRequest;
 
 class CarouselItemController extends Controller
 {
@@ -14,7 +16,7 @@ class CarouselItemController extends Controller
      */
     public function index()
     {
-        $carousel_items = CarouselItem::with('carousel')->get();
+        $carousel_items = CarouselItem::with('homepage_section')->get();
         return view('admin.carouselItem.index', compact('carousel_items'));
     }
 
@@ -23,25 +25,55 @@ class CarouselItemController extends Controller
      */
     public function create()
     {
-        $carousels = Carousel::get();
-        return view('admin.carouselItem.create', compact('carousels'));
+        // $carousels = Carousel::get();
+        $homepage_section = HomepageSection::where(['section_type' => 'carousel', 'status' =>1])->orderBy('display_order' , 'asc')->get();
+    $all_carousel_item_display_orders = CarouselItem::select('display_order')->get()->pluck('display_order')->toArray();
+    // dd(  $all_carousel_item_display_orders );
+    // if (!empty(  $all_carousel_item_display_orders )) {
+    //     $display_order_count = 
+    // }
+        return view('admin.carouselItem.create', compact('homepage_section' , 'all_carousel_item_display_orders'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    // {
+    //     try {
+    //         $carousel_item = CarouselItem::create($request->all());
+    //         if ($carousel_item->id > 0) {
+    //             return redirect()->route('admin.carousel-items.index')->with('success', 'Carousel Item added successfully');
+    //         } else {
+    //             return redirect()->back()->with('error', 'something went wrong! ');
+    //         }
+    //     } catch (\Exception $e) {
+    //         return redirect()->back()->with('error', 'something went wrong! ' . $e->getMessage());
+    //     }
+    // }
+
+    public function store(CarouselItemRequest $request)
     {
+        // dd($request);
         try {
-            $carousel_item = CarouselItem::create($request->all());
-            if ($carousel_item->id > 0) {
-                return redirect()->route('admin.carousel-items.index')->with('success', 'Carousel Item added successfully');
-            } else {
-                return redirect()->back()->with('error', 'something went wrong! ');
+            $data = [];
+            if($request->hasFile('image_url')){
+                $data['image_url']= store_image('image_url' ,'app/public/front/images/carousels/' );
             }
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'something went wrong! ' . $e->getMessage());
-        }
+            $data['homepage_section_id'] = $request->homepage_section_id;
+            $data['item_type'] = $request->item_type;
+            // $data['title'] = $request->title;
+            // $data['subtitle'] = $request->subtitle;
+            $data['display_order'] = $request->display_order;
+            $data['status'] =1;
+    
+            CarouselItem::create($data);
+            return redirect()->route('admin.carousel-items.index')->with('success' , 'Carousel Items created successfully');
+            
+          } catch (\Exception $e) {
+            return redirect()->back()->with('error' , 'Something went Wrong! Please Try Again.'.$e->getMessage());
+          }
+    
     }
 
     /**
@@ -58,27 +90,41 @@ class CarouselItemController extends Controller
     public function edit(string $id)
     {
         $carouselitem = CarouselItem::find($id); 
-        $carousels = Carousel::get();
-         return view('admin.carouselItem.edit')->with(compact('carouselitem' ,'carousels'));
+        // $carousels = Carousel::get();
+        //  return view('admin.carouselItem.edit')->with(compact('carouselitem' ,'carousels'));
+         $homepage_section = HomepageSection::where(['section_type' => 'carousel', 'status' =>1])->get();
+         $all_carousel_item_display_orders = CarouselItem::select('display_order')->get()->pluck('display_order')->toArray();
+         return view('admin.carouselItem.edit')->with(compact('carouselitem' ,'homepage_section' ,'all_carousel_item_display_orders'));
+
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CarouselItemRequest $request, string $id)
     {
         try {
-            $carouselitem = CarouselItem::whereId($id)->update([
-                'carousel_id' => $request->carousel_id,
-                'item_id' => $request->item_id,
-                'item_type' => $request->item_type,
-                'display_order' => $request->display_order,
-            ]);
-                return redirect()->route('admin.carousel-items.index')->with('success' , 'Carousel Item updated successfully');
-    
-            } catch (\Exception $e) {
-                return redirect()->back()->with('error', 'something went wrong! ' . $e->getMessage());
+            if ($request->hasFile('image_url')) {
+                $data['image_url'] = store_image('image_url', 'app/public/front/images/carousels/');
             }
+            
+            $data['homepage_section_id'] = $request->homepage_section_id;
+            $data['item_type'] = $request->item_type;
+            $data['display_order'] = $request->display_order;
+            $data['status'] = $request->status;
+            $carousel_item =  CarouselItem::where('id', $id)->update($data);
+            if ($carousel_item) {
+                return redirect()->route('admin.carousel-items.index')->with('success', 'Carousel Item updated successfully');
+            } else {
+                return redirect()->back()->with('error','Something went wrong!');
+            }
+            
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error','Something went wrong!'.$e->getMessage());
+        }
+
+     
     }
 
     /**

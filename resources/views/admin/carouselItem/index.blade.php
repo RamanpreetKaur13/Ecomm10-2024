@@ -27,7 +27,7 @@
                                             <th>S.no.</th>
                                             <th>Carousel</th>
                                             <th>Item Type</th>
-                                            <th>Item </th>
+                                            <th>Image </th>
                                             <th>Display order</th>
                                             {{-- @if ($bannerModule['edit_access'] == 1 || $bannerModule['full_access'] == 1) --}}
                                             <th>Status</th>
@@ -47,9 +47,12 @@
                                             @foreach ($carousel_items as $carousel_item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $carousel_item->carousel->name }}</td>
+                                                    <td>{{ $carousel_item->homepage_section->name }}</td>
                                                     <td>{{ Str::ucfirst( $carousel_item->item_type) }}</td>
-                                                    <td>{{ $carousel_item->item_id }}</td>
+                                                    {{-- <td>{{ $carousel_item->item_id }}</td> --}}
+                                                    <td>
+                                                        <img src="{{ asset('storage/front/images/carousels/' . $carousel_item->image_url) }}"
+                                                            alt="" srcset="" width="100px" height="80px"></td>
                                                     <td>{{ $carousel_item->display_order }}</td>
 
                                                     {{-- restrict this feature is subadmin has no permissions --}}

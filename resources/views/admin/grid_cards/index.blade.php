@@ -51,7 +51,7 @@
                                                     <td>
                                                         <img src="{{ asset('storage/front/images/gridCards/' . $grid->image_url) }}"
                                                             alt="" srcset="" width="100px" height="80px">
-                                                        {{-- {{ $banner->image }}</td> --}}
+                                                        {{-- {{ $banner->image }} --}}</td>
                                                     <td>{{ Str::limit($grid->link_url, 50, '...') }}</td>
                                                     <td>{{ $grid->title }}</td>
                                                     <td>{{ $grid->subtitle }}</td>

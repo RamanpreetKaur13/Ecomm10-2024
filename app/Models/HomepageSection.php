@@ -12,7 +12,10 @@ class HomepageSection extends Model
 
     public function grid(){
         return $this->hasMany(GridCard::class , 'homepage_section_id' , 'id')->where('status' ,1);
+    }
 
+    public function carousel_item(){
+        return $this->hasMany(CarouselItem::class , 'homepage_section_id' , 'id')->where('status' ,1);
     }
 
 }

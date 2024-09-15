@@ -18,12 +18,13 @@ class HomeController extends Controller
 
         $banners = Banner::with('homepage_section')->where('status' ,1)->orderBy('display_order')->get();
         $grids = HomepageSection::with('grid')->orderBy('display_order')->where(['section_type' => 'grid' , 'status' => 1])->get()->toArray();
+        $carousels = HomepageSection::with('carousel_item')->orderBy('display_order')->where(['section_type' => 'carousel' , 'status' => 1])->get()->toArray();
         // $grids = GridCard::with('homepage_section')->orderBy('display_order')->get();
-        // dd($grids);
+        // dd($carousels);
         // echo "<pre>";
         // print_r($grids);
         // die();
-        return view('front.home' ,compact('banners', 'grids'));
+        return view('front.home' ,compact('banners', 'grids' , 'carousels'));
     }
 
     public function header(){
