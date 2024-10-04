@@ -33,8 +33,17 @@ class SectionMgmtController extends Controller
     public function store(sectionmgmtRequest $request)
     {
         try {
+           
+            // $homepage_section = HomepageSection::create($request->all());
+              // Check if the request has an image file
+        if ($request->hasFile('image_url')) {
+            // Store the image and set the image path in the request data
+            $data['image_url'] = store_image('image_url', 'app/public/front/images/section/');
+        }
 
-            $homepage_section = HomepageSection::create($request->all());
+        // Merge the $data array (containing the image_url) with the request data
+        $homepage_section = HomepageSection::create(array_merge($request->all(), $data ?? []));
+            
             if ($homepage_section->id > 0) {
                 return redirect()->route('admin.section-management.index')->with('success', 'Section added successfully');
             } else {
@@ -68,11 +77,20 @@ class SectionMgmtController extends Controller
      */
     public function update(sectionmgmtRequest $request, string $id)
     {
-        $homepage_section = HomepageSection::whereId($id)->update([
+        $data = [
             'name' => $request->name,
             'section_type' => $request->section_type,
             'display_order' => $request->display_order,
-        ]);
+        ];
+
+        // Check if the request has an image file
+        if ($request->hasFile('image_url')) {
+            // Store the new image and add the image URL to the $data array
+            $data['image_url'] = store_image('image_url', 'app/public/front/images/section/');
+        }
+
+        // Update the record in the database with the updated $data
+        $homepage_section = HomepageSection::whereId($id)->update($data);
             return redirect()->route('admin.section-management.index')->with('success' , 'Homepage section updated successfully');
 
     }

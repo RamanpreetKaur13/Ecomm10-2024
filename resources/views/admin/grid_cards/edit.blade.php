@@ -139,7 +139,7 @@
 
     <script>
         $(document).ready(function() {
-            var existingDisplayOrders = @json($all_carousel_item_orders);
+            var existingDisplayOrders = @json($all_grid_display_orders);
     
             // Display the taken numbers
             $('#taken-numbers').text(existingDisplayOrders.join(', '));

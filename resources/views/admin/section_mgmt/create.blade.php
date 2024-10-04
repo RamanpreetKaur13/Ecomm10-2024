@@ -25,8 +25,17 @@
                                 Banner</option>
                             <option value="grid" @if (old('section_type') === 'grid') selected @endif>
                                 Grid</option>
+                                <option value="single-grid-item-1" @if (old('section_type') === 'single-grid-item-1') selected @endif>
+                                    Single Grid Item 1</option>
+                                    <option value="single-grid-item-2" @if (old('section_type') === 'single-grid-item-2') selected @endif>
+                                        Single Grid Item 2</option>
                             <option value="carousel" @if (old('section_type') === 'carousel') selected @endif>
                                 Carousel</option>
+
+                                <option value="promotional-banner-1" @if (old('section_type') === 'promotional-banner-1') selected @endif>
+                                    Promotional Banner 1</option>
+                                    <option value="promotional-banner-2" @if (old('section_type') === 'promotional-banner-2') selected @endif>
+                                        Promotional Banner 2</option>
                             <option value="custom" @if (old('section_type') === 'custom') selected @endif>
                                 Custom</option>
                             <option value="other" @if (old('section_type') === 'other') selected @endif>
@@ -41,6 +50,9 @@
                 <div class="row">
                     <x-forms.text-input label="Display Order" type="text" name="display_order"
                         placeholder="Enter Sorting number" spanStar='*' />
+
+                        <x-forms.file-component label="Section Image" name="image_url" dimension='max. 150 x 100px' spanStar='' />
+
                 </div>
                 @error('display_order')
                 <span class="text-danger"> {{ $message }}</span>

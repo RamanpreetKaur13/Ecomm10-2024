@@ -34,9 +34,19 @@
                                 Banner</option>
                             <option value="grid" @if ($homepage_section->section_type === 'grid') selected @endif>
                                 Grid</option>
+                                <option value="single-grid-item-1" @if ($homepage_section->section_type === 'single-grid-item-1') selected @endif>
+                                    Single Grid Item 1</option>
+
+                                    <option value="single-grid-item-2" @if ($homepage_section->section_type === 'single-grid-item-2') selected @endif>
+                                        Single Grid Item 2</option>
 
                             <option value="carousel" @if ($homepage_section->section_type === 'carousel') selected @endif>
                                 Carousel</option>
+                                <option value="promotional-banner-1" @if ($homepage_section->section_type === 'promotional-banner-1') selected @endif>
+                                    Promotional Banner 1</option>
+                                    <option value="promotional-banner-2" @if ($homepage_section->section_type === 'promotional-banner-2') selected @endif>
+                                        Promotional Banner 2</option>
+
                             <option value="custom" @if ($homepage_section->section_type === 'custom') selected @endif>
                                 Custom</option>
 
@@ -60,6 +70,25 @@
                             @error('display_order')
                             <span class="text-danger"> {{ $message }}</span>
                         @enderror
+
+
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="image">Section Image<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="image_url">
+
+                                <label class="custom-file-label" for="image">Choose
+                                    file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
+                        @error('image_url')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group col-6 d-none">
@@ -69,6 +98,17 @@
                             placeholder="Enter Section status" value="{{ $homepage_section->status }}">
                     </div>
 
+                    <div class="form-group col-6">
+                        @if (!empty($homepage_section->image_url))
+                            <div class="img-wrap">
+                                <a href="{{ asset('storage/front/image/section/' . $homepage_section->image_url) }}" target="_blank">
+                                    <img src="{{ asset('storage/front/images/section/' . $homepage_section->image_url) }}" alt=""
+                                        srcset="" width="500px" height="150px">
+                                </a>
+                            </div>
+                       
+                        @endif
+                    </div>
                 </div>
                 <hr>
 
